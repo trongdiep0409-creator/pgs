@@ -307,8 +307,9 @@ const FAQS = [
 ];
 
 export default function ExpertsWorkspace() {
-  const activeTab = 'live';
-  
+  const [activeTab, setActiveTab] = useState<'live' | 'handoff'>('live');
+  const [activeHandoffSubTab, setActiveHandoffSubTab] = useState<'seo' | 'design' | 'dev'>('seo');
+
   // Interactive state for Live Production page
   const [selectedRole, setSelectedRole] = useState<string>('strategy');
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(0);

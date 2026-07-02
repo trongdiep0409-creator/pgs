@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 export default function CeoProfileComponent() {
-  const activeTab = 'preview';
+  const [activeTab] = useState<'preview' | 'blueprint'>('preview');
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [hoveredExpertise, setHoveredExpertise] = useState<number>(0);
   const [scrollProgress, setScrollProgress] = useState(0);
