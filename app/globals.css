@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-sans), sans-serif;
+  
+  --color-gold-50: #FCF8F2;
+  --color-gold-100: #FAF0DB;
+  --color-gold-200: #F3DCAC;
+  --color-gold-300: #EAC477;
+  --color-gold-400: #DFAF45;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #B5902B;
+  --color-gold-700: #8F6F20;
+  --color-gold-800: #6B5117;
+  --color-gold-900: #4D390E;
+  --color-gold-950: #2E2106;
+
+  --color-brand-dark: #111111;
+  --color-brand-muted: #666666;
+  --color-brand-light: #F4F4F1;
+
+  --color-gold: #D4AF37;
+  --color-gold-light: #F4EBD0;
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-800: #2B2B2B;
+  --color-offwhite: #FAFAFA;
+}
+
+@layer utilities {
+  .site-header {
+    @apply font-sans text-brand-dark;
+  }
+  .site-footer {
+    @apply font-sans text-brand-dark;
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+  }
+  .glass-panel-gold {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(254, 250, 240, 0.85));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.15);
+  }
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #E5C555 0%, #C29621 50%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .border-gold-gradient {
+    border-image: linear-gradient(135deg, #D4AF37, #FAF0DB) 1;
+  }
+}
+
+/* Hide Next.js Dev Tool Overlay Elements */
+nextjs-portal,
+#nextjs-portal,
+[data-nextjs-dialog-overlay],
+[data-nextjs-toast],
+.nextjs-toast,
+[class*="nextjs-"],
+[id*="nextjs"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide Developer Specs / Đặc Tả Helper Buttons */
+button.border-dashed,
+button[class*="border-dashed"],
+button[class*="bg-gold-100"],
+button[class*="bg-gold-50"],
+.absolute > button[class*="text-gold-700"],
+.absolute > button[class*="text-gold-600"],
+#ai-privacy-launcher,
+[id*="ai-privacy-launcher"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Unify Website Button Colors to Premium Gold Branding */
+button.bg-gold,
+a.bg-gold,
+button.bg-brand-dark,
+a.bg-brand-dark,
+button[class*="bg-brand-dark"],
+a[class*="bg-brand-dark"],
+button[class*="bg-gradient-to-r"],
+a[class*="bg-gradient-to-r"],
+button[class*="bg-charcoal"],
+a[class*="bg-charcoal"] {
+  background: linear-gradient(135deg, #B89047 0%, #D4AF37 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #B89047 !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+button.bg-gold:hover,
+a.bg-gold:hover,
+button.bg-brand-dark:hover,
+a.bg-brand-dark:hover,
+button[class*="bg-brand-dark"]:hover,
+a[class*="bg-brand-dark"]:hover,
+button[class*="bg-gradient-to-r"]:hover,
+a[class*="bg-gradient-to-r"]:hover,
+button[class*="bg-charcoal"]:hover,
+a[class*="bg-charcoal"]:hover {
+  background: linear-gradient(135deg, #A37E3B 0%, #C5A028 100%) !important;
+  border-color: #A37E3B !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Yellow blinking dot */
+.blink-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 2px;
+  background-color: var(--color-gold-500); /* gold yellow */
+  border-radius: 50%;
+  animation: blink 1s infinite steps(2, start);
+}
+@keyframes blink {
+  0%, 50% { opacity: 0; }
+  51%, 100% { opacity: 1; }
+}
