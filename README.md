@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PGS Hub - Hệ thống Quản lý Hoạt động PGS Agency
 
-## Getting Started
+PGS Hub là ứng dụng web quản lý toàn bộ quy trình làm việc của PGS Agency, kết nối trực tiếp khách hàng và nhân viên nội bộ.
 
-First, run the development server:
+## 🚀 Tính năng cốt lõi
 
+1. **Bảng điều khiển vai trò (Role-based Dashboard)**: Action Center hiển thị ưu tiên "Cần bạn xử lý" cho từng vai trò người dùng (Super Admin, Admin, Manager, Accountant, Employee, Client Owner, Client Member).
+2. **Quản lý Tiến độ trọng số (Weighted Milestones)**: Tiến độ dự án tự động tính toán chính xác theo công thức trọng số phần trăm thực tế.
+3. **Trao đổi & Bình luận**: Luồng thảo luận riêng biệt cho từng Task và trạng thái duyệt sản phẩm bàn giao.
+4. **Duyệt Deliverables**: Phiên bản hóa deliverables, hỗ trợ phê duyệt trực tiếp hoặc yêu cầu sửa đổi đi kèm ý kiến khách hàng.
+5. **Ký số & Thanh toán**: Nhật ký chứng thực ký số, danh sách hóa đơn theo đợt và tải lên ủy nhiệm chi.
+6. **Chấm công Geolocation**: Check-in định vị GPS so khớp geofence 100m văn phòng.
+7. **Báo cáo Quảng cáo Ads**: Biểu đồ trực quan tích hợp `Recharts` hiển thị chi tiêu, Impressions, Clicks và Leads.
+
+---
+
+## 🛠️ Stack kỹ thuật
+- **Framework**: Next.js 15 (App Router) + React + TypeScript strict mode.
+- **Styling**: Tailwind CSS + Font Space Grotesk / Inter.
+- **Biểu đồ**: Recharts.
+- **Cơ sở dữ liệu**: PostgreSQL / Supabase (migrations và seed data có sẵn trong thư mục `/supabase`).
+
+---
+
+## 💻 Cách chạy dự án dưới Local
+
+### 1. Cài đặt các Package phụ thuộc
+Chạy lệnh sau tại thư mục gốc:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Thiết lập Biến môi trường
+Sao chép `.env.example` thành `.env.local`:
+```bash
+cp .env.example .env.local
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Chạy Dev Server
+Khởi động máy chủ phát triển cục bộ:
+```bash
+npm run dev
+```
+Mở [http://localhost:3000](http://localhost:3000) trên trình duyệt để kiểm tra.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Tài khoản Demo có sẵn để thử nghiệm
+Bạn có thể đăng nhập nhanh bằng một trong các email mẫu tại màn hình đăng nhập:
+- `admin@pgs.demo` — Super Admin (Quản trị hệ thống, khôi phục thùng rác, audit logs)
+- `manager@pgs.demo` — Manager / PM (Quản lý dự án, phân task, duyệt nội bộ)
+- `accountant@pgs.demo` — Accountant (Quản lý lương, bảng công, thanh toán)
+- `employee@pgs.demo` — Employee (Nhận việc, báo công, xem lương chính mình)
+- `owner@abc.demo` — Client Owner (Doanh nghiệp ABC, xem dự án, duyệt, thanh toán)
+- `member@abc.demo` — Client Member (Thành viên ABC được gán quyền xem dự án)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Supabase Database Setup (Khi tích hợp thật)
+Thư mục `/supabase/migrations/` chứa toàn bộ cấu trúc bảng DDL và `/supabase/seed.sql` chứa dữ liệu mẫu để bạn chạy lệnh `supabase db push` hoặc import trực tiếp vào trang quản trị Supabase SQL Editor.
